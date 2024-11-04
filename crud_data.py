@@ -25,6 +25,7 @@ new_data1 = pd.DataFrame({
     'runtime': ['1h 56m'],
 })
 
+# Dữ liệu 2: Tên phim 'Dragon Ball Super'
 new_data2 = pd.DataFrame({
     'movieId': ['fc343ab45-12f3-654c-10adr-74737c141c23f'],
     'movieYear': [2024],
@@ -41,6 +42,7 @@ new_data2 = pd.DataFrame({
     'runtime': ['1h 19m'],
 })
 
+# Dữ liệu 3: Tên phim 'Dragon Ball AF'
 new_data3 = pd.DataFrame({
     'movieId': ['fc414ab2314-24f3-321c-10adv-42424c52c23e'],
     'movieYear': [2024],
@@ -75,7 +77,7 @@ df.columns = [
     'Danh gia', 'Ngon ngu', 'Thoi luong phim'
 ]
 
-# Đổi một số dữ liệu tên phim ở dòng 28 (cụ thể từ cột movieTitle (Tên phim), movieURL)).
+# Đổi một số dữ liệu tên phim ở dòng 28 (cụ thể từ cột movieTitle (Ten phim), movieURL(Nguon xem phim), critic_score(Diem phe binh), audience_score(Diem khan gia), release_date_theaters(Ngay ra rap), release_date_streaming(Ngay phat song)).
 df.loc[df['Ten phim'] == 'Bobcat Moretti', 'Ten phim'] = 'Chasing Shadows'
 df.loc[df['Nguon xem phim'] == 'https://www.rottentomatoes.com/m/bobcat_moretti', 'Nguon xem phim'] = 'https://www.rottentomatoes.com/m/chasing Shadows'
 df.loc[df['Diem phe binh'] == 71, 'Diem phe binh'] = 85
@@ -99,7 +101,7 @@ df['Ngay ra rap'] = pd.to_datetime(df['Ngay ra rap'].str.extract(r'(\w+ \d{1,2},
 # Chuyển đổi cột "Ngày phat song" với định dạng tương tự.
 df['Ngay phat song'] = pd.to_datetime(df['Ngay phat song'].str.extract(r'(\d{1,2}-\w{3}-\d{2})')[0], format='%d-%b-%y', errors='coerce').dt.strftime('%d/%m/%Y')
 
-# Hoán đổi cột 'ngày ra rạp' và 'ngày phát sóng'.
+# Hoán đổi cột 'Nam san xuat' và 'Ten phim'.
 # Chọn hai cột để hoán đổi theo chỉ số.
 col1 = 'Nam san xuat'       # Tên cột thứ nhất
 col2 = 'Ten phim'     # Tên cột thứ hai
