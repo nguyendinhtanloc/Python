@@ -1,0 +1,1 @@
+File dữ liệu thô tmdb-movies.csv -> crud_data.py ( Phú) -> newFileCrudData.csv -> clean_data.py (Phương) -> newFileCleanData.csv
