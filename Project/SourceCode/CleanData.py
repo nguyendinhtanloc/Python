@@ -125,6 +125,23 @@ class CleanData:
     # 14. Thêm cột số thứ tự (STT)
     df.insert(0, 'STT', range(1, len(df) + 1))  # Thêm cột STT vào đầu DataFrame, bắt đầu từ 1
 
+    # 15. Kiểm tra và thay thế năm phát hành nếu ngày không hợp lệ
+    if 'Ngày phát hành' in df.columns and 'Năm phát hành' in df.columns:
+        # Lấy năm từ cột 'Ngày phát hành'
+        df['Năm từ ngày phát hành'] = pd.to_datetime(df['Ngày phát hành'], format='%d/%m/%Y', errors='coerce').dt.year
+
+        # So sánh và thay thế nếu 'Năm từ ngày phát hành' không nằm trong khoảng 1966-2015
+        df['Năm từ ngày phát hành'] = df['Năm từ ngày phát hành'].fillna(0).astype(int)
+        df['Ngày phát hành'] = df.apply(
+            lambda row: row['Ngày phát hành'] if 1966 <= row['Năm từ ngày phát hành'] <= 2015 else row['Năm phát hành'],
+            axis=1
+        )
+
+        # Xóa cột tạm thời 'Năm từ ngày phát hành'
+        df.drop(columns=['Năm từ ngày phát hành'], inplace=True, errors='ignore')
+
+    end_time = time.time()  # Ghi nhận thời gian kết thúc
+
     # Hàm dự đoán giá trị thiếu bằng mô hình học máy
     def predict_missing_values(df, target_column, feature_columns):
         # Tách dữ liệu thành 2 phần: có giá trị và không có giá trị
@@ -169,8 +186,6 @@ class CleanData:
     df.to_csv(output_file_with_predictions, index=False, encoding='utf-8')
     print(f"File kết quả sau khi dự đoán đã được lưu tại: '{output_file_with_predictions}'")
 
-    # Thời gian thực hiện
-    end_time = time.time()  # Ghi nhận thời gian kết thúc
     execution_time = end_time - start_time  # Tính thời gian thực hiện
     print(f"\nThời gian thực hiện: {execution_time:.2f} giây")
 

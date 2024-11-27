@@ -128,3 +128,11 @@
         File CSV chứa dữ liệu đa cấp, ví dụ: cột được nhóm lại (MultiIndex).
     - Giải quyết:
         Xử lý dữ liệu phân cấp bằng cách đặt lại chỉ số hoặc làm phẳng cột.
+
+20. Mô hình dự đoán học máy
+    - Nguyên nhân: 
+        Do phần các cột 'doanh thu' và 'ngân sách' có nhiều giá trị bằng 0, nếu xử lý theo
+        kiểu xoá dòng thì số lượng dữ liệu mất đi là quá lớn.
+    - Giải quyết: 
+        Sử dụng các dữ liệu của 'Độ phổ biến', 'Số lượt bình chọn', 'Điểm trung bình', 'Thời lượng', 
+        'Năm phát hành' để dự đoán giá trị của 'doanh thu' và 'ngân sách'.

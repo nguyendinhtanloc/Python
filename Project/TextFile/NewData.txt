@@ -49,7 +49,4 @@
 13. Đánh giá tổng quan phim
     - Trường hợp Điểm trung bình bị thiếu hoặc không nằm trong khoảng [0, 10]: Kết quả sẽ không chính xác nếu không kiểm tra giá trị trước.
     - Giải pháp: Xử lý giá trị thiếu và giới hạn giá trị trong phạm vi hợp lệ.
-
-14. Phim đa thể loại
-    - Trường hợp Thể loại bị thiếu hoặc không phải chuỗi: Kiểm tra '|' sẽ gây lỗi nếu giá trị không phải chuỗi.
-    - Giải pháp: Kiểm tra kiểu dữ liệu và gán giá trị mặc định 0.
+    

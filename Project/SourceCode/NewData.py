@@ -101,9 +101,6 @@ class NewData:
         labels=['Tệ', 'Khá', 'Xuất sắc']
     )
 
-    # 14. Phim đa thể loại
-    df['Phim đa thể loại'] = df['Thể loại'].apply(lambda x: 1 if isinstance(x, str) and '|' in x else 0)
-
     # Lưu file kết quả
     output_dir = 'Data'
     output_file = os.path.join(output_dir, 'Enhanced_DataFile.csv')
